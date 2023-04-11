@@ -37,7 +37,7 @@ class Program
                     Console.Clear(); ;
                     break;
                 case 3:
-                    EliminarEmpleado();
+                    //EliminarEmpleado();
                     Console.Clear();
                     break;
                 case 4:
