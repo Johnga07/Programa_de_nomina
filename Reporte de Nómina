@@ -1,0 +1,71 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Aquí iría el código para cargar los datos de los empleados desde el sistema de nómina
+
+        bool salir = false;
+        while (!salir)
+        {
+            Console.WriteLine("Seleccione una opción: ");
+            Console.WriteLine("1. Empleados que son mujeres");
+            Console.WriteLine("2. Empleados que poseen licencias");
+            Console.WriteLine("3. Empleados que ganan por encima de los 50,000");
+            Console.WriteLine("4. Volver atrás");
+            Console.WriteLine("5. Salir del sistema");
+
+            string opcionSeleccionada = Console.ReadLine();
+
+            switch (opcionSeleccionada)
+            {
+                case "1":
+                    // Mostrar empleados que son mujeres
+                    foreach (Empleado empleado in listaEmpleados)
+                    {
+                        if (empleado.Sexo == "Femenino")
+                        {
+                            Console.WriteLine(empleado.Nombre);
+                        }
+                    }
+                    break;
+
+                case "2":
+                    // Mostrar empleados que poseen licencias
+                    foreach (Empleado empleado in listaEmpleados)
+                    {
+                        if (empleado.Licencia)
+                        {
+                            Console.WriteLine(empleado.Nombre);
+                        }
+                    }
+                    break;
+
+                case "3":
+                    // Mostrar empleados que ganan por encima de los 50,000
+                    foreach (Empleado empleado in listaEmpleados)
+                    {
+                        if (empleado.Salario > 50000)
+                        {
+                            Console.WriteLine(empleado.Nombre);
+                        }
+                    }
+                    break;
+
+                case "4":
+                    // Volver atrás
+                    break;
+
+                case "5":
+                    // Salir del sistema
+                    salir = true;
+                    break;
+
+                default:
+                    Console.WriteLine("Opción no válida, por favor seleccione otra opción.");
+                    break;
+            }
+        }
+    }
+}
