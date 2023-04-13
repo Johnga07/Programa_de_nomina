@@ -78,26 +78,50 @@ class Program
 
         string[] empleado = new string[12]; // Se creó un array empleado para contener los datos de empleados y conectarlo al array global
 
+        // Nombre
         Console.Write("Nombre: ");
-        empleado[0] = Console.ReadLine();
+        empleado[0] = string.Empty;
+        do
+        {
+            
+            empleado[0] = Console.ReadLine().ToUpper();
+        }
+        while (!empleado[0].All(c => Char.IsLetter(c)));
+
+        // Apelldio
 
         Console.Write("Apellido: ");
-        empleado[1] = Console.ReadLine();
+        empleado[1] = string.Empty;
+        do
+        {
+            
+            empleado[1] = Console.ReadLine().ToUpper();
+        }
+        while (!empleado[1].All(c => Char.IsLetter(c)));
+
+        // Edad
 
         Console.Write("Edad: ");
         int edad;
-        int.TryParse(Console.ReadLine(), out edad);
+        while (!int.TryParse(Console.ReadLine(), out edad))
+        {
+            Console.WriteLine("Edad invalidad, ingrese un numero entero por favor");
+            Console.Write("Edad:  ");
+        }
         empleado[2] = edad.ToString();
 
-        //Este codigo  es para validar el sexo 
+        // Sexo
+
         Console.Write("Sexo (M o F): ");
         empleado[3] = Console.ReadLine().ToUpper();
         while (empleado[3] != "M" && empleado[3] != "F")
         {
-            Console.WriteLine("Sexo invalido, por favor ingrese 'M' para masculino o 'F' para femenino");
-            Console.Write("Sexo (M o F): ");
+            Console.WriteLine("Sexo invalido, por favor escriba 'M' para masculine y 'F' para femenino");
+            Console.Write("Sexo (M o F:  ");
             empleado[3] = Console.ReadLine().ToUpper();
         }
+
+        //Fecha de Nacimiento
 
         Console.Write("Fecha de nacimiento: ");
         DateOnly fechaNacimiento;
@@ -108,25 +132,53 @@ class Program
         }
         empleado[4] = fechaNacimiento.ToString();
 
+        // Poseer licencia 
+
         Console.Write("Posee Licencia: ");
         bool poseeLicencia;
-        bool.TryParse(Console.ReadLine(), out poseeLicencia);
+        while (!bool.TryParse(Console.ReadLine(), out poseeLicencia))
+        {
+            Console.Write("Ingrese True o False: ");
+
+        }
         empleado[5] = poseeLicencia.ToString();
+
+        // Sueldo Bruto
 
         Console.Write("Sueldo bruto: ");
         decimal sueldoBruto;
-        decimal.TryParse(Console.ReadLine(), out sueldoBruto);
+
+
+        while (!decimal.TryParse(Console.ReadLine(), out sueldoBruto))
+        {
+            Console.WriteLine("Sueldo bruto invalido, ingrese un numero entero o decimal, por favor");
+            Console.Write("Sueldo Bruto:  ");
+        }
         empleado[6] = sueldoBruto.ToString();
+
+        // Tss
 
         Console.Write("TSS: ");
         decimal tss;
-        decimal.TryParse(Console.ReadLine(), out tss);
+        while (!decimal.TryParse(Console.ReadLine(), out tss))
+        {
+            Console.WriteLine("Tss invalido, ingrese una cantidad numerica, por favor");
+            Console.Write("TSS:  ");
+        }
+
         empleado[7] = tss.ToString();
+
+        // Impuesto sobre la renta 
 
         Console.Write("Impuesto sobre la renta: ");
         decimal impuestoSobreLaRenta;
-        decimal.TryParse(Console.ReadLine(), out impuestoSobreLaRenta);
+        while (!decimal.TryParse(Console.ReadLine(), out impuestoSobreLaRenta))
+        {
+            Console.WriteLine("Impuesto sobre la renta invalido, ingrese una cantidad numerica, por favor");
+            Console.Write("Impuesto sobre la renta:  ");
+        }
         empleado[8] = impuestoSobreLaRenta.ToString();
+
 
         decimal sueldoNeto;
         sueldoNeto = sueldoBruto - tss - impuestoSobreLaRenta;
