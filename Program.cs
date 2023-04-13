@@ -10,12 +10,17 @@ class Program
         bool salir = false;
         while (!salir)
         {
+            Console.Clear();
             Console.WriteLine("Menu");
             Console.WriteLine();
             Console.WriteLine("1. Crear empleado");
             Console.WriteLine("2. Ver empleado");
-            Console.WriteLine("3. Eliminar empleado");
-            Console.WriteLine("4. Salir");
+            Console.WriteLine("3. Empleados que son mujeres");
+            Console.WriteLine("4. Empleados que poseen licencia");
+            Console.WriteLine("5. Empleados que ganan por encima de los 50,000");
+            Console.WriteLine("6. Eliminar empleado");
+
+            Console.WriteLine("7. Salir");
 
             int opcion;
             Console.Write("\nElija una opción: ");
@@ -37,16 +42,29 @@ class Program
                     Console.Clear(); ;
                     break;
                 case 3:
-                    //EliminarEmpleado();
+                    EmpleadosQueSonMujeres();
                     Console.Clear();
                     break;
                 case 4:
+                    EmpleadosConlicencia();
+                    Console.Clear();
+                    break;
+                case 5:
+                    EmpleadosPorEncimaDe50000();
+                    Console.Clear();
+                    break;
+                case 6:
+                    EliminarEmpleado();
+                    Console.Clear();
+                    break;
+                case 7:
                     salir = true;
                     Console.Clear();
                     Console.WriteLine("Gracias por utilizar nuestro programa de nomina.!");
                     break;
                 default:
                     Console.WriteLine("Opcion invalida, por favor elija otra opcion");
+                    Console.Clear();
                     break;
             }
 
@@ -58,7 +76,7 @@ class Program
     static void CrearEmpleado()
     {
 
-        string[] empleado = new string[10]; // Se creó un array empleado para contener los datos de empleados y conectarlo al array global
+        string[] empleado = new string[12]; // Se creó un array empleado para contener los datos de empleados y conectarlo al array global
 
         Console.Write("Nombre: ");
         empleado[0] = Console.ReadLine();
@@ -71,10 +89,15 @@ class Program
         int.TryParse(Console.ReadLine(), out edad);
         empleado[2] = edad.ToString();
 
-        Console.Write("Sexo: ");
-        char sexo;
-        char.TryParse(Console.ReadLine(), out sexo);
-        empleado[3] = sexo.ToString().ToUpper();
+        //Este codigo  es para validar el sexo 
+        Console.Write("Sexo (M o F): ");
+        empleado[3] = Console.ReadLine().ToUpper();
+        while (empleado[3] != "M" && empleado[3] != "F")
+        {
+            Console.WriteLine("Sexo invalido, por favor ingrese 'M' para masculino o 'F' para femenino");
+            Console.Write("Sexo (M o F): ");
+            empleado[3] = Console.ReadLine().ToUpper();
+        }
 
         Console.Write("Fecha de nacimiento: ");
         DateOnly fechaNacimiento;
@@ -155,7 +178,58 @@ class Program
         Console.ReadKey();
         Console.Clear();
     }
- 
+
+    static void EmpleadosQueSonMujeres()
+    {
+        Console.WriteLine("Empleados que son mujeres");
+
+        for (int i = 0; i < cantidadDeEmpleados; i++)
+        {
+            if (empleados[i][3] == "F")
+            {
+                Console.WriteLine($"\nEmpleado {i + 1}:");
+                Console.WriteLine($"Nombre: {empleados[i][0]}");
+                Console.WriteLine($"Apellido: {empleados[i][1]}");
+                Console.WriteLine($"Edad: {empleados[i][2]}");
+                Console.WriteLine($"Sexo: {empleados[i][3]}");
+                Console.WriteLine($"Fecha de nacimiento: {empleados[i][4]}");
+                Console.WriteLine($"Posee licencia: {empleados[i][5]}");
+                Console.WriteLine($"Suledo bruto: {empleados[i][6]}");
+                Console.WriteLine($"TSS: {empleados[i][7]}");
+                Console.WriteLine($"Impuesto sobre la Renta: {empleados[i][8]}");
+                Console.WriteLine();
+                Console.WriteLine("------------------------------------Resultado del sueldo------------------------------------");
+                Console.WriteLine();
+                Console.WriteLine($"Sueldo Neto: {empleados[i][9]}");
+                Console.WriteLine();
+
+                Console.ReadKey();
+                Console.Clear();
+                
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("No hay empleados femeninos aun.");
+                Console.ReadKey();
+                Console.Clear();
+                return;
+            }
+
+        }
+    }
+    static void EmpleadosConlicencia()
+    {
+
+    }
+
+    static void EmpleadosPorEncimaDe50000()
+    {  
+        
+    }
+    static void EliminarEmpleado()
+    {
+       
     }
 
 }
