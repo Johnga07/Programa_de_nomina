@@ -80,7 +80,7 @@ class Program
 
         // Nombre
         Console.Write("Nombre: ");
-        empleado[0] = Console.ReadLine().ToLower();
+        empleado[0] = Console.ReadLine().ToUpper();
 
         while (!empleado[0].All(nombre => char.IsLetter(nombre)))
         {
@@ -231,7 +231,7 @@ class Program
         Console.ReadKey();
         Console.Clear();
     }
-
+    //Este metodo me permite ver los empleados femeninos
     static void EmpleadosQueSonMujeres()
     {
         Console.WriteLine("Empleados que son mujeres");
@@ -271,6 +271,7 @@ class Program
 
         }
     }
+    //Este metodo me permite ver los empleados que tienen licencia
     static void EmpleadosConlicencia()
     {
         bool hayEmpleadosConLicencia = false;
@@ -302,7 +303,7 @@ class Program
         Console.ReadKey();
         Console.Clear();
     }
-
+    //Este metodo me permite llamar a los empleados que ganan por encima de los 50 mil
     static void EmpleadosPorEncimaDe50000()
     {
         bool encontrado = false;
@@ -334,6 +335,7 @@ class Program
         Console.ReadKey();
         Console.Clear();
     }
+    //Este codigo se utiliza para eliminar empleados conectados al array global
     static void EliminarEmpleado()
     {
         Console.Write("Ingrese la posición del empleado a eliminar: ");
