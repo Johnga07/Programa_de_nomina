@@ -1,0 +1,31 @@
+static void EmpleadosConlicencia()
+    {
+        bool hayEmpleadosConLicencia = false;
+        Console.WriteLine("Lista de empleados con licencia:");
+        Console.WriteLine();
+
+        for (int i = 0; i < cantidadDeEmpleados; i++)
+        {
+            if (empleados[i][5].ToLower() == "true")
+            {
+                Console.WriteLine("Nombre: " + empleados[i][0]);
+                Console.WriteLine("Apellido: " + empleados[i][1]);
+                Console.WriteLine("Edad: " + empleados[i][2]);
+                Console.WriteLine("Sexo: " + empleados[i][3]);
+                Console.WriteLine("Fecha de Nacimiento: " + empleados[i][4]);
+                Console.WriteLine("Posee Licencia: " + empleados[i][5]);
+                Console.WriteLine("Sueldo Neto: " + empleados[i][9]);
+                Console.WriteLine("--------------------------------");
+                hayEmpleadosConLicencia = true;
+            }
+        }
+
+        if (!hayEmpleadosConLicencia)
+        {
+            Console.WriteLine("No hay empleados con licencia.");
+        }
+
+        Console.WriteLine("\nPrecione cualquier tecla para volver al menu.");
+        Console.ReadKey();
+        Console.Clear();
+    }
